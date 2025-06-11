@@ -1,3 +1,22 @@
+:root {
+    /* Cores bases */
+    --cor-header: #31AC91;  /* Zomp */
+    --cor-tangerina: #FF9F78;   /* Tangerina Atômica */
+    --cor-ebony: #545e56;   /* vc ja sabe a cor */
+    --cor-alice: #e8f0ff;   /* Azul Alice (assinado alice) */
+    --cor-bistre: #3f2208;  /* eu vo fala e nada */
+}
+
+header {
+    background-color: var(--cor-header);
+    padding: 10px 20px;
+    /* *   **O que faz:** Transforma um elemento contêiner em um **contêiner flexbox**.
+*   **Resultado:** Os filhos diretos desse contêiner se tornam **itens flex** e podem ser organizados em uma linha ou coluna.
+*   **Uso:** É a base para usar o layout flexbox, permitindo controlar o alinhamento, a direção e a distribuição do espaço entre os itens de forma eficiente, especialmente para layouts unidimensionais (linha ou coluna). */
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos filhos (logo/icones e busca) */
+    align-items: center; /* Alinha verticalmente ao centro */
+}
 footer {
     background-color: #545e56;
 }
