@@ -1,10 +1,15 @@
 :root {
     /* Cores bases */
-    --cor-header: #31AC91;  /* Zomp */
-    --cor-tangerina: #FF9F78;   /* Tangerina Atômica */
-    --cor-ebony: #545e56;   /* vc ja sabe a cor */
-    --cor-alice: #e8f0ff;   /* Azul Alice (assinado alice) */
-    --cor-bistre: #3f2208;  /* eu vo fala e nada */
+    --cor-header: #31AC91;
+    /* Zomp */
+    --cor-tangerina: #FF9F78;
+    /* Tangerina Atômica */
+    --cor-ebony: #545e56;
+    /* vc ja sabe a cor */
+    --cor-alice: #e8f0ff;
+    /* Azul Alice (assinado alice) */
+    --cor-bistre: #3f2208;
+    /* eu vo fala e nada */
 }
 
 header {
@@ -14,12 +19,111 @@ header {
 *   **Resultado:** Os filhos diretos desse contêiner se tornam **itens flex** e podem ser organizados em uma linha ou coluna.
 *   **Uso:** É a base para usar o layout flexbox, permitindo controlar o alinhamento, a direção e a distribuição do espaço entre os itens de forma eficiente, especialmente para layouts unidimensionais (linha ou coluna). */
     display: flex;
-    justify-content: space-between; /* Espaça os elementos filhos (logo/icones e busca) */
-    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: space-between;
+    /* Espaça os elementos filhos (logo/icones e busca) */
+    align-items: center;
+    /* Alinha verticalmente ao centro */
 }
+
+header>div:first-child {
+    /* O div que contém o h1 (o nome do jogo) e os ícones: Seleciona o PRIMEIRO <div> que está DIRETAMENTE dentro do <header> */
+    /* O sinal ">" significa "filho direto". Então, "header > div" encontra apenas os divs que são filhos de primeira linha do header, não os que estão mais escondidos dentro de outros divs. */
+    /* ":first-child" significa "o primeiro irmão" de um grupo. Então, "div:first-child" encontra o primeiro div que aparece dentro do header. */
+    display: flex;
+    align-items: center;
+    /* Espaço entre o h1 e o div de ícones: Coloca 20px de espaço entre o nome do jogo e o grupo de ícones */
+    gap: 20px;
+}
+
+header>div:first-child>div {
+    /* O div que contém os links dos ícones: Seleciona o <div> que está DIRETAMENTE dentro do PRIMEIRO <div> que está DIRETAMENTE dentro do <header> */
+    display: flex;
+    gap: 15px;
+}
+
+header>div:last-child {
+    /* ":last-child" significa "o último irmão" de um grupo. Então, "div:last-child" encontra o último div que aparece dentro do header. */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+header a {
+    /* Estilos para TODOS os links (<a>) dentro do <header> */
+    color: inherit;
+    /* Usa a cor do texto pai: Faz o link pegar a cor do texto do elemento que o contém, em vez de ser o azul padrão dos links */
+    text-decoration: none;
+    /* Remove sublinhado dos links: Tira aquela linha chata que aparece embaixo dos links por padrão */
+    position: relative;
+    /* Importante! Prepara o link para posicionar o texto que vai aparecer no hover */
+}
+
+header a:hover i {
+    /* Estilos para o ÍCONE (<i>) que está DENTRO de um link (<a>) quando o mouse PASSA POR CIMA desse link */
+    /* Este seletor "header a:hover i" significa: "Encontre o <header>, depois encontre um <a> dentro dele que o mouse está passando por cima (:hover), e dentro desse <a>, encontre um <i> (nosso ícone Font Awesome) e aplique estes estilos nele!" */
+    display: inline-block;
+    /* Faz o ícone se comportar um pouco como uma caixa para que padding e border funcionem bem */
+    padding: 5px;
+    /* Adiciona um pequeno espaço entre o ícone e a borda */
+    border: 2px solid var(--cor-tangerina);
+    /* Adiciona uma borda de 2px, sólida e branca, ao redor do ícone */
+    border-radius: 50%;
+    /* Faz com que a borda fique redonda, criando um círculo! ⭕ */
+    transition: border-color 0.3s ease, border-radius 0.3s ease;
+    /* Faz a borda aparecer mais suavemente */
+}
+
+/* --- Adicionando o texto que aparece no hover (Tooltip!) --- */
+header a::after {
+    /* Cria uma "caixinha invisível" depois de cada link de ícone */
+    /* Essa caixinha vai guardar o texto que queremos mostrar */
+    content: attr(data-description);
+    /* Pega o texto de um atributo especial no HTML chamado "data-description" */
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    /* A caixinha começa no meio do link */
+    transform: translateX(-50%);
+    /* ...E move para a esquerda pela metade do seu tamanho, para ficar bem centralizado embaixo do ícone */
+    background-color: var(--cor-ebony);
+    /* Fundo escuro para a caixinha de texto */
+    color: white;
+    /* Texto branco */
+    padding: 3px 8px;
+    /* Espaço interno na caixinha de texto */
+    border-radius: 4px;
+    /* Cantinhos levemente arredondados */
+    font-size: 0.8em;
+    /* Texto um pouco menor que o normal */
+    white-space: nowrap;
+    /* Impede que o texto quebre em várias linhas */
+    opacity: 0;
+    /* Deixa a caixinha de texto invisível por padrão */
+    pointer-events: none;
+    /* Faz com que o mouse "ignore" essa caixinha, para não atrapalhar o clique no ícone */
+    transition: opacity 0.3s ease;
+    /* Faz a caixinha aparecer e sumir suavemente */
+    z-index: 10;
+    /* Garante que a caixinha de texto apareça por cima de outros elementos, se houver */
+}
+
+header a:hover::after { /* Quando o mouse PASSA POR CIMA do link... */
+    opacity: 1; /* ...Faz a caixinha de texto ficar visível! ✨ */
+    header input[type="text"] { /* Estilos para o campo de texto (<input>) que tem o tipo "text" dentro do <header> (nossa caixa de busca!) */
+    padding: 5px; /* Espaço interno na caixa de busca */
+    border: 1px solid #ccc; /* Borda fininha e cinza ao redor da caixa */
+    border-radius: 3px; /* Deixa os cantinhos da caixa de busca um pouquinho arredondados */
+}
+}
+
+body {
+    background-color: var(--cor-tangerina);
+}
+
 footer {
     background-color: #545e56;
 }
+
 a {
     padding: 5px;
 }
