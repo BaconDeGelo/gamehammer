@@ -14,7 +14,7 @@
 
 header {
     background-color: var(--cor-header);
-    padding: 10px 20px;
+    padding: 0 20px;
     /* *   **O que faz:** Transforma um elemento contêiner em um **contêiner flexbox**.
 *   **Resultado:** Os filhos diretos desse contêiner se tornam **itens flex** e podem ser organizados em uma linha ou coluna.
 *   **Uso:** É a base para usar o layout flexbox, permitindo controlar o alinhamento, a direção e a distribuição do espaço entre os itens de forma eficiente, especialmente para layouts unidimensionais (linha ou coluna). */
@@ -107,23 +107,60 @@ header a::after {
     /* Garante que a caixinha de texto apareça por cima de outros elementos, se houver */
 }
 
-header a:hover::after { /* Quando o mouse PASSA POR CIMA do link... */
-    opacity: 1; /* ...Faz a caixinha de texto ficar visível! ✨ */
-    header input[type="text"] { /* Estilos para o campo de texto (<input>) que tem o tipo "text" dentro do <header> (nossa caixa de busca!) */
-    padding: 5px; /* Espaço interno na caixa de busca */
-    border: 1px solid #ccc; /* Borda fininha e cinza ao redor da caixa */
-    border-radius: 3px; /* Deixa os cantinhos da caixa de busca um pouquinho arredondados */
+header a:hover::after {
+    /* Quando o mouse PASSA POR CIMA do link... */
+    opacity: 1;
+    /* ...Faz a caixinha de texto ficar visível! ✨ */
 }
+
+.header-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-pesquisa input[type="text"] {
+    /* Estilos para o campo de texto (<input>) que tem o tipo "text" dentro do <header> (nossa caixa de busca!) */
+    padding: 5px;
+    /* Espaço interno na caixa de busca */
+    border: 1px solid #ccc;
+    /* Borda fininha e cinza ao redor da caixa */
+    border-radius: 3px;
+    /* Deixa os cantinhos da caixa de busca um pouquinho arredondados */
+    width: 210px;
+    font-size: 1em;
+}
+
+a {
+    padding: 5px;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: var(--cor-tangerina);
 }
 
-footer {
-    background-color: #545e56;
+.categoria {
+    margin-bottom: 25px;
+    padding: 10px 0;
 }
 
-a {
-    padding: 5px;
+.jogos-grid {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    background: var(--cor-alice);
+    border-radius: 5px;
+    padding: 15px 8px;
+    /* mostra uma barra de rolagem horizontal automaticamente, mas só se precisar */
+    overflow-x: auto;
+    border: 2px solid var(--cor-alice);
+}
+
+footer {
+    background-color: #545e56;
 }
