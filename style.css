@@ -173,6 +173,23 @@ body {
     width: 180px;
 }
 
+.contatos-grid {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    background: var(--cor-alice);
+    border-radius: 5px;
+    padding: 15px 15px;
+    /* mostra uma barra de rolagem horizontal automaticamente, mas só se precisar */
+    overflow-x: auto;
+    border: 2px solid var(--cor-alice);
+    margin-bottom: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
 footer {
     background-color: #545e56;
     color: var(--cor-alice);
