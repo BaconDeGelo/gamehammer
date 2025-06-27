@@ -131,6 +131,10 @@ header a:hover::after {
     font-size: 1em;
 }
 
+h1 {
+    text-align: center;
+}
+
 a {
     padding: 5px;
 }
@@ -188,6 +192,23 @@ body {
 
 .text-center {
     text-align: center;
+}
+
+.wifit {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    /* Indica que é clicável */
+    border: none;
+    border-radius: 15px;
+    background-color: #009e00;
+    color: white;
+    transition: background-color 0.3s ease;
+    /* Animação suave ao passar o mouse */
+}
+
+.wifit:hover {
+    background-color: #00d412;
 }
 
 footer {
